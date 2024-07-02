@@ -24,12 +24,31 @@ ip address
 
 ```bash
 docker build -t java-api:v1.0 -f Dockerfile .
+# 
 ```
 
 4. Run container
 
 ```bash
 docker run --name java-api -p 8008:8080 java-api:v1.0
+```
+
+5. Run with Compose
+
+
+```bash
+# Build image first
+docker build -t java-api:v3 -f Dockerfile .
+# Start services in docker compose
+docker-compose -f docker-compose.yaml up -d
+```
+
+5. Run with Full Compose
+
+
+```bash
+# build & start services in docker compose
+docker-compose -f docker-compose-build.yaml up -d --build
 ```
 
 # Testing time

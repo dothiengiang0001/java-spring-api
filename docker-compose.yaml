@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+    - $PWD/db/script/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    - api_db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+  java-api:
+    image: java-api:v3
+    command: ["java", "-Dspring.config.location=/configs/application.properties","-jar","spring-boot-api-tutorial.jar"]
+    volumes:
+    - $PWD/config/:/configs/
+    depends_on:
+    - db
+    ports:
+    - 3080:8080
+    environment:
+      DB_HOST: db:3306
+      DB_USERNAME: root
+      DB_PASSWORD: root123
+
+volumes:
+  api_db:

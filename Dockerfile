@@ -20,4 +20,4 @@ COPY --from=builder /usr/src/app/target/${JAR_FILE} /opt/app/
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","spring-boot-api-tutorial.jar"]
+CMD ["java","-jar","spring-boot-api-tutorial.jar"]
