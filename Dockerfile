@@ -1,6 +1,6 @@
 # AS <NAME> to name this stage as maven
 FROM maven:3.6.3 AS builder
-LABEL MAINTAINER="phuhoang.c2@gmail.com"
+LABEL MAINTAINER="dothiengiang0001@gmail.com"
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
